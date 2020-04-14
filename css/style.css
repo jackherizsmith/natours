@@ -73,7 +73,7 @@ body {                              /*effectively parent element of all elements
     letter-spacing: 21.5px;
     /*only need two properties for animation to work, timnig function is nice*/
     animation-name: moveInLeft;
-    animation-duration: 1s;
+    animation-duration: 1.5s;
     animation-timing-function: ease-out; /*control speed of animation*/    
 
 
@@ -87,7 +87,7 @@ body {                              /*effectively parent element of all elements
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 11.3px;
-    animation: moveInRight 1s ease-out; /*can push these properties together*/
+    animation: moveInRight 1.5s ease-out; /*can push these properties together*/
 }
 
 /*could use a transition property and animate on event, but keyframes is more advanced one with options:*/
@@ -124,6 +124,18 @@ body {                              /*effectively parent element of all elements
     }
 }
 
+@keyframes moveInBottom {
+    0% {        
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {   
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .btn:link,         /*pseudo when selector is an anchor element*/
 .btn:visited {      /*visited once link has been visited*/
     text-transform: uppercase;
@@ -132,6 +144,7 @@ body {                              /*effectively parent element of all elements
     display: inline-block;  /*inline by default, when we want it to be a block (need height, width, padding etc). Treated as text (can be centre aligned in parent)*/
     border-radius: 100px;   /*above a certain value (half its height) it will remain rounded*/
     transition: all .2s;    /*transition sets new property - all transitions all properties including later states like :hover*/
+    position: relative;
 }
 
 .btn:hover {
@@ -147,4 +160,32 @@ body {                              /*effectively parent element of all elements
 .btn-white {
     color: #777;
     background-color: #fff;
+}
+
+.btn::after {   /*adds virtual element immediately after to style separately - good to style it as initial element*/
+    content:""; /*needs content*/
+    display: inline-block; /*needs display*/
+    height: 100%; /*fill 'parent' element*/
+    width: 100%;
+    
+    border-radius: 100px;
+    position: absolute; /*set to positioned button*/
+    top: 0;
+    left: 0;
+    z-index: -1; /*order behind other elements*/
+    transition: all 0.4s;
+}
+
+.btn-white::after {
+    background-color: #fff; /*because it's specific to modifier*/
+}
+
+.btn:hover::after { /*only exists on hover state*/
+    transform: scaleX(1.5) scaleY(1.6); /*can scale in two directions*/
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;  /*delay to layer animation*/
+    animation-fill-mode: backwards; /*automatically applies 0% values*/
 }
