@@ -55,11 +55,13 @@ body {                              /*effectively parent element of all elements
     position: absolute;
     top: 40%; /*can then change position once centred*/
     left: 50%;/*moves top left corner to centre of praent element*/
+    transform: translate(-50%,-50%); /*shifts element back according to its own dimensions*/
+    text-align: center;
 }
 
 .heading-primary{       /*good to sort format and style first and deal with positioning at the end*/
     color: #fff;
-    transform: translate(-50%,-50%); /*shifts element back according to its own dimensions*/
+    margin-bottom: 60px;    /*to give space below heading*/
 
     backface-visibility: hidden;    /*animations can be jumpy - good to set this on a container of animated element to hide glitching*/
 }
@@ -80,7 +82,7 @@ body {                              /*effectively parent element of all elements
     /* animation-iteration-count: 3; <- repeat */
 }
 
-    .heading-primary-sub{
+.heading-primary-sub{
     display: block;
     font-size: 20px;
     font-weight: 700;
@@ -120,4 +122,29 @@ body {                              /*effectively parent element of all elements
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.btn:link,         /*pseudo when selector is an anchor element*/
+.btn:visited {      /*visited once link has been visited*/
+    text-transform: uppercase;
+    text-decoration: none;  /*remove normal formatting so we can control colours for accessibility later on*/
+    padding: 15px 40px;
+    display: inline-block;  /*inline by default, when we want it to be a block (need height, width, padding etc). Treated as text (can be centre aligned in parent)*/
+    border-radius: 100px;   /*above a certain value (half its height) it will remain rounded*/
+    transition: all .2s;    /*transition sets new property - all transitions all properties including later states like :hover*/
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.2);   /*x y blur colour*/
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px hsla(0, 0%, 0%, 0.2); /*Can use to imitate relative depth*/ 
+}
+
+.btn-white {
+    color: #777;
+    background-color: #fff;
 }
