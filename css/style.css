@@ -30,7 +30,7 @@ body {                              /*effectively parent element of all elements
     color: #777;
     padding:3rem;   /*makes page pop a bit*/
 
-    box-sizing: border-box;         /*border and padding not added to total width and height*/
+    box-sizing: border-box;         /*means that height and width declarations include padding and border, i.e. fill area*/
 }
 
 .header {                       /*can just type bits of words to grab variable*/
@@ -48,17 +48,17 @@ body {                              /*effectively parent element of all elements
     position: relative; /*so that children e.g. .logo-box can be positioned*/
 }                                       
 
-.logo-box { /*order them by introduction in HTML*/
+.header__logo-box { /*order them by introduction in HTML*/
     position: absolute; /*can then use top, bottom, left, right to position exactly*/
     top: 4rem;  /* needs a relative parent*/
     left: 4rem;
 }
 
-.logo {
+.header__logo {
     height: 3.5rem;       /*could do height or width, browser will work out the other*/
 }
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%; /*can then change position once centred*/
     left: 50%;/*moves top left corner to centre of praent element*/
@@ -73,7 +73,7 @@ body {                              /*effectively parent element of all elements
     backface-visibility: hidden;    /*animations can be jumpy - good to set this on a container of animated element to hide glitching*/
 }
 
-.heading-primary-main{
+.heading-primary--main{
     display: block;    /*block level occupy entire available width and create line breaks before and after*/
     font-size: 6rem;
     font-weight: 700; /*h1 higher by default*/
@@ -89,7 +89,7 @@ body {                              /*effectively parent element of all elements
     /* animation-iteration-count: 3; <- repeat */
 }
 
-.heading-primary-sub{
+.heading-primary--sub{
     display: block;
     font-size: 2rem;
     font-weight: 700;
@@ -165,7 +165,7 @@ body {                              /*effectively parent element of all elements
     box-shadow: 0 .5rem 1rem hsla(0, 0%, 0%, .2); /*Can use to imitate relative depth*/ 
 }
 
-.btn-white {
+.btn--white {
     color: #777;
     background-color: #fff;
 }
@@ -180,11 +180,11 @@ body {                              /*effectively parent element of all elements
     position: absolute; /*set to positioned button*/
     top: 0;
     left: 0;
-    z-index: -1; /*order behind other elements*/
+    z-index: -1; /*order behind other elements*/ /*note - z-index isn't the only property that affects stacking order e.g. opacity*/
     transition: all .4s; /*best practice to leave 0*/
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff; /*because it's specific to modifier*/
 }
 
@@ -193,7 +193,7 @@ body {                              /*effectively parent element of all elements
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveInBottom 0.5s ease-out 0.75s;  /*delay to layer animation*/
     animation-fill-mode: backwards; /*automatically applies 0% values*/
 }
