@@ -11,19 +11,26 @@ Dark green: #28b485
 
 /* * and body to initialise page */
 
-* { 
+*,
+*::after, *::before {       /*initialise temporary elements as well, good place to set inheritance*/
     margin: 0;
     padding: 0;
-    box-sizing: border-box;         /*border and padding not added to total width and height*/
+    box-sizing: inherit;    /*forces inheritance of every element within body*/
+}
+
+html {
+    font-size: 62.5%;       /*sets root font to 10px for easy REM reference without affecting other font sizes*/
 }
 
 body {                              /*effectively parent element of all elements*/
     font-family:"Lato", sans serif; /*fonts are usually inherited, always call on body*/
     font-weight: 400;
-    font-size: 16px;                /*probs change this*/
-    line-height: 1.7;
+    /* font-size: 1.5rem;                set in root */
+    line-height: 1.7;           /*multiplier*/
     color: #777;
-    padding:30px;   /*makes page pop a bit*/
+    padding:3rem;   /*makes page pop a bit*/
+
+    box-sizing: border-box;         /*border and padding not added to total width and height*/
 }
 
 .header {                       /*can just type bits of words to grab variable*/
@@ -43,12 +50,12 @@ body {                              /*effectively parent element of all elements
 
 .logo-box { /*order them by introduction in HTML*/
     position: absolute; /*can then use top, bottom, left, right to position exactly*/
-    top: 40px;  /* needs a relative parent*/
-    left: 40px;
+    top: 4rem;  /* needs a relative parent*/
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;       /*could do height or width, browser will work out the other*/
+    height: 3.5rem;       /*could do height or width, browser will work out the other*/
 }
 
 .text-box {
@@ -61,16 +68,16 @@ body {                              /*effectively parent element of all elements
 
 .heading-primary{       /*good to sort format and style first and deal with positioning at the end*/
     color: #fff;
-    margin-bottom: 60px;    /*to give space below heading*/
+    margin-bottom: 6rem;    /*to give space below heading*/
 
     backface-visibility: hidden;    /*animations can be jumpy - good to set this on a container of animated element to hide glitching*/
 }
 
 .heading-primary-main{
     display: block;    /*block level occupy entire available width and create line breaks before and after*/
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 700; /*h1 higher by default*/
-    letter-spacing: 21.5px;
+    letter-spacing: 2.2rem;
     /*only need two properties for animation to work, timnig function is nice*/
     animation-name: moveInLeft;
     animation-duration: 1.5s;
@@ -84,9 +91,9 @@ body {                              /*effectively parent element of all elements
 
 .heading-primary-sub{
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 11.3px;
+    letter-spacing: 1.1rem;
     animation: moveInRight 1.5s ease-out; /*can push these properties together*/
 }
 
@@ -95,11 +102,11 @@ body {                              /*effectively parent element of all elements
 @keyframes moveInLeft { /*can call this animation on multiple elements*/
     0% {        /*start properties*/
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     70% {
-        transform: translateX(10px);    /*flair*/
+        transform: translateX(1rem);    /*flair*/
     }
 
     100% {      /*end properties*/
@@ -111,11 +118,11 @@ body {                              /*effectively parent element of all elements
 @keyframes moveInRight {
     0% {        
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     70% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100% {   
@@ -127,7 +134,7 @@ body {                              /*effectively parent element of all elements
 @keyframes moveInBottom {
     0% {        
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100% {   
@@ -140,21 +147,22 @@ body {                              /*effectively parent element of all elements
 .btn:visited {      /*visited once link has been visited*/
     text-transform: uppercase;
     text-decoration: none;  /*remove normal formatting so we can control colours for accessibility later on*/
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;  /*inline by default, when we want it to be a block (need height, width, padding etc). Treated as text (can be centre aligned in parent)*/
-    border-radius: 100px;   /*above a certain value (half its height) it will remain rounded*/
+    border-radius: 10rem;   /*above a certain value (half its height) it will remain rounded*/
     transition: all .2s;    /*transition sets new property - all transitions all properties including later states like :hover*/
     position: relative;
+    font-size: 1.6rem;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.2);   /*x y blur colour*/
+.btn:hover {        /*fyi a pseudo class counts as one more class in specificity, so :hover styling could fail on higher specificity elements*/
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem hsla(0, 0%, 0%, .2);   /*x y blur colour*/
 }
 
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px hsla(0, 0%, 0%, 0.2); /*Can use to imitate relative depth*/ 
+    box-shadow: 0 .5rem 1rem hsla(0, 0%, 0%, .2); /*Can use to imitate relative depth*/ 
 }
 
 .btn-white {
@@ -168,12 +176,12 @@ body {                              /*effectively parent element of all elements
     height: 100%; /*fill 'parent' element*/
     width: 100%;
     
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute; /*set to positioned button*/
     top: 0;
     left: 0;
     z-index: -1; /*order behind other elements*/
-    transition: all 0.4s;
+    transition: all .4s; /*best practice to leave 0*/
 }
 
 .btn-white::after {
