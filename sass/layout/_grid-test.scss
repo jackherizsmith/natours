@@ -1,0 +1,22 @@
+.row {
+    // 1400px is standard
+    width: $grid-width;  // use max-width so that it can use availabe space
+    background-color: #eee;
+    margin: 0 auto; // how to centre block elements inside block elements
+    
+    &:not(:last-child) {         // :not selects everything except certain thing 
+        margin-bottom: $gutter-vertical; // which is why this moves down here
+    }
+
+    @include clearfix;
+
+    .col-1-of-2 {  // with nesting column is now always inside row 
+        width: calc((100% - #{$gutter-horizontal}) / 2); // can do operations and mix units(!!) #{} equiv to template literal
+        background-color: orangered;
+        float:left;   // always float to left for a margin on the right
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal; // margin on every column except last one
+        }
+    }
+}

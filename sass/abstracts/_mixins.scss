@@ -5,3 +5,11 @@
 // @mixin font-colour($colour){can use $colour}; 
 // then
 // @include font-colour(red);
+
+@mixin clearfix {   // fixes 0 height of floated elements
+    &::after {
+        content : ""; // required
+        display: table; // standard for clearfix
+        clear: both;    // clear left and right
+    }
+}

@@ -1,3 +1,4 @@
+// COLOURS    <- helpful to separate out variables
 $colour-primary: hsl(111, 55%, 64%);       // variables declared with $
 $colour-primary-light: hsl(160, 64%, 43%); // and can use slashes to comment in sass, which is how these are distinguished
 $colour-primary-dark: hsl(160, 64%, 43%);
@@ -5,3 +6,8 @@ $colour-primary-dark: hsl(160, 64%, 43%);
 $colour-grey-dark:hsl(0, 0%, 47%);
 $colour-white:hsl(0, 0%, 100%);
 $colour-black:hsl(0, 0%, 0%);
+
+// GRID
+$grid-width: 114rem;
+$gutter-vertical: 8rem;
+$gutter-horizontal: 6rem;
