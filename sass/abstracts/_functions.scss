@@ -4,3 +4,7 @@
 // @function divide($a, $b){@return $a/$b}
 // then
 // width: divide(60,2) * .1rem;
+
+// @function colWidth($x, $y) {   I tried
+    // @return (($x * (100% - ($y - 1) * #{$gutter-horizontal})) / $y) + ($x-1) * #{$gutter-horizontal};
+// }
