@@ -1,0 +1,7 @@
+// a mixin is a reference to a chunk of code that can be reused in multiple places
+// @mixin -> @include
+
+// mixins can also take arguments to alter them e.g.
+// @mixin font-colour($colour){can use $colour}; 
+// then
+// @include font-colour(red);

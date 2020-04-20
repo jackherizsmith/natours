@@ -1,0 +1,6 @@
+// abstracts folder is for code that doesn't do any styling itself, but prepares code for use in other files
+// functions can run calculations and take arguments e.g.
+
+// @function divide($a, $b){@return $a/$b}
+// then
+// width: divide(60,2) * .1rem;
