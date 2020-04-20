@@ -1,0 +1,197 @@
+$colour-primary: hsl(111, 55%, 64%);       // variables declared with $
+$colour-primary-light: hsl(160, 64%, 43%); // and can use slashes to comment in sass, which is how these are distinguished
+$colour-primary-dark: hsl(160, 64%, 43%);
+
+$colour-grey-dark:hsl(0, 0%, 47%) ;
+$colour-white:hsl(0, 0%, 100%);
+
+/* using Chrome inspect element is great for fine tuning CSS*/
+
+/* * and body to initialise page */
+
+*,
+*::after, *::before {       /*initialise temporary elements as well, good place to set inheritance*/
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;    /*forces inheritance of every element within body*/
+}
+
+html {
+    font-size: 62.5%;       /*sets root font to 10px for easy REM reference without affecting other font sizes*/
+}
+
+body {                              /*effectively parent element of all elements*/
+    font-family:"Lato", sans serif; /*fonts are usually inherited, always call on body*/
+    font-weight: 400;
+    /* font-size: 1.5rem;                set in root */
+    line-height: 1.7;           /*multiplier*/
+    color: $colour-grey-dark;
+    padding:3rem;   /*makes page pop a bit*/
+
+    box-sizing: border-box;         /*means that height and width declarations include padding and border, i.e. fill area*/
+}
+
+.header {                       /*can just type bits of words to grab variable*/
+    height: 95vh;
+    background-image: linear-gradient(/*to layer images, the first one declared will be on top*/
+        to right bottom,            /*CSS will work out where the gradient is going from -> to*/
+        rgba($colour-primary-light, 0.8), /*set opactiy quickly with colour picker*/
+        rgba($colour-primary-dark, 0.8)), // use colours in same way
+      url(../img/hero.jpg);     /*relative path*/
+    background-size: cover;     /*will always try to fit image in box*/
+    background-position: top;   /*fix image to top of screen despite resizing*/
+                    /*for clip-path code out the box www.bennettfeely.com/clippy */
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);       /*define path of polygon with any number of x,y (% or any) co-ordinates, good to start top left and go clockwise*/
+    
+    position: relative; /*so that children e.g. .logo-box can be positioned*/
+}                                       
+
+.header__logo-box { /*order them by introduction in HTML*/
+    position: absolute; /*can then use top, bottom, left, right to position exactly*/
+    top: 4rem;  /* needs a relative parent*/
+    left: 4rem;
+}
+
+.header__logo {
+    height: 3.5rem;       /*could do height or width, browser will work out the other*/
+}
+
+.header__text-box {
+    position: absolute;
+    top: 40%; /*can then change position once centred*/
+    left: 50%;/*moves top left corner to centre of praent element*/
+    transform: translate(-50%,-50%); /*shifts element back according to its own dimensions*/
+    text-align: center;
+}
+
+.heading-primary{       /*good to sort format and style first and deal with positioning at the end*/
+    color: $colour-white;
+    margin-bottom: 6rem;    /*to give space below heading*/
+
+    backface-visibility: hidden;    /*animations can be jumpy - good to set this on a container of animated element to hide glitching*/
+}
+
+.heading-primary--main{
+    display: block;    /*block level occupy entire available width and create line breaks before and after*/
+    font-size: 6rem;
+    font-weight: 700; /*h1 higher by default*/
+    letter-spacing: 2.2rem;
+    /*only need two properties for animation to work, timnig function is nice*/
+    animation-name: moveInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out; /*control speed of animation*/    
+
+
+
+    /* animation-delay: 3s; <- wait before starting animation */
+    /* animation-iteration-count: 3; <- repeat */
+}
+
+.heading-primary--sub{
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.1rem;
+    animation: moveInRight 1.5s ease-out; /*can push these properties together*/
+}
+
+/*could use a transition property and animate on event, but keyframes is more advanced one with options:*/
+
+@keyframes moveInLeft { /*can call this animation on multiple elements*/
+    0% {        /*start properties*/
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    70% {
+        transform: translateX(1rem);    /*flair*/
+    }
+
+    100% {      /*end properties*/
+        opacity: 1;
+        transform: translateX(0); /*reset value*/
+    }
+}
+
+@keyframes moveInRight {
+    0% {        
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    70% {
+        transform: translateX(-1rem);
+    }
+
+    100% {   
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {        
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {   
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn:link,         /*pseudo when selector is an anchor element*/
+.btn:visited {      /*visited once link has been visited*/
+    text-transform: uppercase;
+    text-decoration: none;  /*remove normal formatting so we can control colours for accessibility later on*/
+    padding: 1.5rem 4rem;
+    display: inline-block;  /*inline by default, when we want it to be a block (need height, width, padding etc). Treated as text (can be centre aligned in parent)*/
+    border-radius: 10rem;   /*above a certain value (half its height) it will remain rounded*/
+    transition: all .2s;    /*transition sets new property - all transitions all properties including later states like :hover*/
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.btn:hover {        /*fyi a pseudo class counts as one more class in specificity, so :hover styling could fail on higher specificity elements*/
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem hsla(0, 0%, 0%, .2);   /*x y blur colour*/
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem hsla(0, 0%, 0%, .2); /*Can use to imitate relative depth*/ 
+}
+
+.btn--white {
+    color: $colour-grey-dark;
+    background-color: $colour-white;
+}
+
+.btn::after {   /*adds virtual element immediately after to style separately - good to style it as initial element*/
+    content:""; /*needs content*/
+    display: inline-block; /*needs display*/
+    height: 100%; /*fill 'parent' element*/
+    width: 100%;
+    
+    border-radius: 10rem;
+    position: absolute; /*set to positioned button*/
+    top: 0;
+    left: 0;
+    z-index: -1; /*order behind other elements*/ /*note - z-index isn't the only property that affects stacking order e.g. opacity*/
+    transition: all .4s; /*best practice to leave 0*/
+}
+
+.btn--white::after {
+    background-color: $colour-white; /*because it's specific to modifier*/
+}
+
+.btn:hover::after { /*only exists on hover state*/
+    transform: scaleX(1.5) scaleY(1.6); /*can scale in two directions*/
+    opacity: 0;
+}
+
+.btn--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;  /*delay to layer animation*/
+    animation-fill-mode: backwards; /*automatically applies 0% values*/
+}
