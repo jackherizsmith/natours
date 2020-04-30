@@ -74,7 +74,7 @@
         display: inline-block; // important so can edit box dimensions
         text-decoration: none; // to set on styling
         border-bottom: .1rem solid $colour-primary;
-        padding: .3rem; // this could be wrong. for definitely fixed units on small things, px might be better but makes little difference
+        padding: .3rem .8rem; // this could be wrong. for definitely fixed units on small things, px might be better but makes little difference
         transition: all .2s;
     }
 

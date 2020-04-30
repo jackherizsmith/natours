@@ -204,13 +204,21 @@
                 </div>
             </section>
             <section class="section-stories">
-                <div class="u-centre-text u-margin-bottom-big">
+                <div class="bg-video">
+                    <video class="bg-video__content" autoplay muted loop>  <!--autoplay on load - usually bad but not a problem muted in background-->
+                        <source src="img/video.mp4" type="video/mp4"> <!--from Coverr.co-->
+                        <source src="img/video.web4" type="video/web4"> <!--both types for widest usage-->
+                        Your broswer is not supported <!--for very out of date IE-->
+                    </video>
+                </div>
+                <div class="u-center-text u-margin-bottom-big">
                     <h2 class="heading-secondary">We make people genuinely happy</h2>
                 </div>
                 <div class="row">   <!--don't need columns but handy to reuse not last child margin -->
                     <div class="story">
-                        <figure class="story__shape"> <!--best for image with caption -->
+                        <figure class="story__shape u-center-text"> <!--best for image with caption -->
                             <img src="img/nat-8.jpg" alt="person on a tour" class="story__image">
+                            <figcaption class="story__caption">Mary Smith</figcaption>
                         </figure>
                         <div class="story__text">
                             <h3 class="heading-tertiary u-margin-bottom-small">I had the best week ever with my family</h3>
@@ -219,6 +227,23 @@
                             </p>
                         </div>
                     </div>
+                </div>
+                <div class="row">   <!--don't need columns but handy to reuse not last child margin -->
+                    <div class="story">
+                        <figure class="story__shape u-center-text"> <!--best for image with caption -->
+                            <img src="img/nat-9.jpg" alt="person on a tour" class="story__image">
+                            <figcaption class="story__caption">Jack Wilson</figcaption>
+                        </figure>
+                        <div class="story__text">
+                            <h3 class="heading-tertiary u-margin-bottom-small">Wow my life is completely different now</h3>
+                            <p class="story__text">
+                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam odio voluptates reprehenderit velit labore. Ipsam quis enim et? In iste numquam illo itaque suscipit quaerat ab quasi commodi error vero?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-center-text u-margin-top">
+                    <a href="#" class="btn-text">Read all stories &rarr;</a>
                 </div>
             </section>
         </main>

@@ -1,19 +1,20 @@
 .story {
     width: 75%;
+    min-height: 27rem;
     margin: 0 auto;
     box-shadow: $shadow-deep;
-    background-color: $colour-white;
+    background-color: rgba($colour-white,.6); // nice view through to video
     border-radius: .3rem;
     padding: 6rem;
     padding-left: 9rem; // to un-offset translated shape (overwrites general padding)
     font-size: $default-font-size; // paragraph will inherit this
 
     transform: skewX(-12deg);
-
+    
     & > * {     // no way to have two transforms valid on one element so must add this to other transform too.
         transform: skewX(12deg);
     }
-
+    
     &__shape {
         width: 15rem;
         height: 15rem;
@@ -23,9 +24,37 @@
         -webkit-clip-path: circle(50% at 50% 50%);
         clip-path: circle(50% at 50% 50%);
         transform: translateX(-3rem) skewX(12deg); // best not to mess with padding / margin when floating
+        overflow: hidden;
+        
+        position: relative;
     }
 
     &__image {
         height: 100%;    // responsive images ALWAYS need a width and /or height
+        transform: translateX(-4rem) scale(1.4); // to help centre image, to zoom out on hover
+        transition: all .5s;
+    }
+
+    &__caption {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, 20%); // 0 for fun starting point
+        color: $colour-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        opacity: 0; // for initial hidden state
+        transition: all .5s;
+        backface-visibility: hidden; // can stop glitch wobble
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%); // final desitnation not relative, needs whole thing
+    }
+
+    &:hover &__image {
+        transform: translateX(-4rem) scale(1); // requires initial photo to be zoomed in
+        filter: blur(.3rem) brightness(60%); // more in-CSS photoshopping e.g. hue rotation
     }
 }

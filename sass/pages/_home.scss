@@ -28,6 +28,7 @@
 }
 
 .section-stories {
+    position: relative; // for video to be placed absolutely
     padding: 15rem 0;
     // background-color: $colour-grey-light-1; // to be replaced with background video
 }
