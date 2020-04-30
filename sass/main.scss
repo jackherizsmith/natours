@@ -15,6 +15,7 @@
 @import "base/utilities"; // for generic reuseable snippets (e.g. centre text)
 
 @import "components/button"; // re-useable building blocks that can be used anywhere in our project
+@import "components/composition";
 
 @import "layout/header"; // layouts is what hold our components together
 @import "layout/grid-test"; // learning float for grid layout
