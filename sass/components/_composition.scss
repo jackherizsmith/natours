@@ -3,7 +3,7 @@
 
     &__photo {
         width: 55%; /*always define images with percentages if possible*/
-        box-shadow: 0 1.5rem 4rem rgba($colour-black, .4);
+        box-shadow: $shadow-shallow;
         border-radius: .2rem;
         position: absolute; /*can now place children relatively to self*/
         transition: all .2s;
@@ -30,7 +30,7 @@
         &:hover {
             outline: 1rem solid $colour-primary;
             transform: scale(1.05) translateY(-.5rem);
-            box-shadow: 0 2.5rem 4rem rgba($colour-black, .5); // since it is closer, it should cast a bigger shadow
+            box-shadow: $shadow-deep; // since it is closer, it should cast a bigger shadow
             z-index: 1; // rise to top
 
         }

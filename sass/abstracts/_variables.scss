@@ -3,13 +3,23 @@ $colour-primary: hsl(111, 55%, 64%);       // variables declared with $
 $colour-primary-light: hsl(111, 55%, 64%); // and can use slashes to comment in sass, which is how these are distinguished
 $colour-primary-dark: hsl(160, 64%, 43%);
 
+$colour-secondary-light: #ffb900;
+$colour-secondary-dark: #ff7730;
+
+$colour-tertiary-light: #2998ff;
+$colour-tertiary-dark: #5643fa;
+
 $colour-grey-light-1: #f7f7f7;
 
 $colour-grey-dark:hsl(0, 0%, 47%);
 $colour-white:hsl(0, 0%, 100%);
 $colour-black:hsl(0, 0%, 0%);
 
-//FONT
+// FEATURES
+$shadow-shallow: 0 1rem 2rem rgba($colour-black, .15);
+$shadow-deep: 0 1.5rem 3rem rgba($colour-black, .15);
+
+// FONT
 $default-font-size: 1.6rem; /*use variables whenever you can!*/
 
 // GRID

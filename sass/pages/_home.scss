@@ -20,3 +20,9 @@
         transform: skewY(7deg); // this doesn't affect image behind but... apparently not a problem
     }
 }
+
+.section-tours {
+    background-color: $colour-grey-light-1;
+    padding: 25rem 0;
+    margin-top: -16vh; 
+}

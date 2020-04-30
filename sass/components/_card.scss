@@ -1,0 +1,50 @@
+.card {
+
+    perspective: 120rem; // must be defined on parent of element to be transformed - essentially distance from element (closer is more massive)
+    -moz-perspective: 150rem; // makes it work in firefox
+    position: relative;
+    height: 50rem;
+
+    &__side {
+        // background-color: orangered;    // fun testing colour
+        height: 50rem;
+        font-size: 2rem;
+        transition: all .8s ease; // to allow spin
+        position: absolute; // to place on top of each other (taken out of natural flow so need to specify height again)
+        top: 0;
+        left: 0;
+        width: 100%;   // to fill element not own width
+        backface-visibility: hidden; // hides back part of element (perfect for rotating)
+        border-radius: .3rem;
+        box-shadow: $shadow-deep;
+
+        &--front {
+            background-color: $colour-white;
+        }
+
+        &--back {
+            transform: rotateY(-180deg); // already flipped (inverse direction of front)
+            
+            &-1 {       // each card has different colour 
+                background-image: linear-gradient(to right bottom, $colour-secondary-light, $colour-secondary-dark);
+            }
+    
+            // &-2 {
+    
+            // }
+    
+            // &-3 {
+    
+            // }
+        }
+    }
+
+    &:hover &__side--front {   // effect happens when main component is hovered
+        transform: rotateY(180deg); // rotates front
+    }
+
+    &:hover &__side--back {    
+        transform: rotateY(0deg); // 'unrotates' back
+    
+    }
+}

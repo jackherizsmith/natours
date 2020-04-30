@@ -4,7 +4,7 @@
     padding: 2.5rem;
     text-align: center;
     border-radius: .3rem;   // small radius looks modern (not too big)
-    box-shadow: 0 1.5rem 4rem rgba($colour-black, .15);
+    box-shadow: $shadow-deep;
     transition: transform .3s; // can specify which property to transition
 
     &__icon {

@@ -123,7 +123,7 @@ body {
 
 .btn:hover {
   transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.15);
   /*x y blur colour*/ }
   .btn:hover::after {
     transform: scaleX(1.5) scaleY(1.6);
@@ -131,7 +131,7 @@ body {
 
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15); }
 
 .btn::after {
   content: "";
@@ -179,7 +179,7 @@ body {
   .composition__photo {
     width: 55%;
     /*always define images with percentages if possible*/
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
     border-radius: .2rem;
     position: absolute;
     /*can now place children relatively to self*/
@@ -200,7 +200,7 @@ body {
     .composition__photo:hover {
       outline: 1rem solid #80d671;
       transform: scale(1.05) translateY(-0.5rem);
-      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.15);
       z-index: 1; }
   .composition:hover .composition__photo:not(:hover) {
     transform: scale(0.95); }
@@ -211,7 +211,7 @@ body {
   padding: 2.5rem;
   text-align: center;
   border-radius: .3rem;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.15);
   transition: transform .3s; }
   .feature-box__icon {
     font-size: 6rem;
@@ -226,6 +226,33 @@ body {
     /*icon can be treated as text*/ }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
+
+.card {
+  perspective: 120rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem; }
+  .card__side {
+    height: 50rem;
+    font-size: 2rem;
+    transition: all .8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: .3rem;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.15); }
+    .card__side--front {
+      background-color: white; }
+    .card__side--back {
+      transform: rotateY(-180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #ffb900, #ff7730); }
+  .card:hover .card__side--front {
+    transform: rotateY(180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0deg); }
 
 .header {
   height: 95vh;
@@ -287,3 +314,8 @@ body {
   transform: skewY(-7deg) translateY(-5rem); }
   .section-features > * {
     transform: skewY(7deg); }
+
+.section-tours {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -16vh; }
