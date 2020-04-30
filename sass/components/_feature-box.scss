@@ -1,0 +1,24 @@
+.feature-box {
+    background-color: rgba($colour-white, .8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: .3rem;   // small radius looks modern (not too big)
+    box-shadow: 0 1.5rem 4rem rgba($colour-black, .15);
+    transition: transform .3s; // can specify which property to transition
+
+    &__icon {
+        font-size: 6rem;
+        margin-bottom: .5rem;display:inline-block; /*element will not take whole width (initially h2 block)*/
+        background-image: linear-gradient(to right, $colour-primary-light, $colour-primary-dark); /*to set gradient colour in text*/ 
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent; /*icon can be treated as text*/
+    }
+
+    // font size inherited from feature-box (defined on parent)
+
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+}

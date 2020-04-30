@@ -16,6 +16,7 @@
 
 @import "components/button"; // re-useable building blocks that can be used anywhere in our project
 @import "components/composition";
+@import "components/feature-box"; // always remember to import new files!
 
 @import "layout/header"; // layouts is what hold our components together
 @import "layout/grid-test"; // learning float for grid layout
