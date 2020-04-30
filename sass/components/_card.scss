@@ -1,14 +1,14 @@
 .card {
 
+    // functionality
     perspective: 120rem; // must be defined on parent of element to be transformed - essentially distance from element (closer is more massive)
     -moz-perspective: 150rem; // makes it work in firefox
     position: relative;
-    height: 50rem;
+    height: 52rem; // required since child element is absolute (0 height on page)
 
     &__side {
         // background-color: orangered;    // fun testing colour
-        height: 50rem;
-        font-size: 2rem;
+        height: 52rem;
         transition: all .8s ease; // to allow spin
         position: absolute; // to place on top of each other (taken out of natural flow so need to specify height again)
         top: 0;
@@ -16,6 +16,7 @@
         width: 100%;   // to fill element not own width
         backface-visibility: hidden; // hides back part of element (perfect for rotating)
         border-radius: .3rem;
+        overflow: hidden;   // so that image doesn't ruin corners
         box-shadow: $shadow-deep;
 
         &--front {
@@ -28,14 +29,14 @@
             &-1 {       // each card has different colour 
                 background-image: linear-gradient(to right bottom, $colour-secondary-light, $colour-secondary-dark);
             }
-    
-            // &-2 {
-    
-            // }
-    
-            // &-3 {
-    
-            // }
+
+            &-2 {       // each card has different colour 
+                background-image: linear-gradient(to right bottom, $colour-primary-light, $colour-primary-dark);
+            }
+            
+            &-3 {       // each card has different colour 
+                background-image: linear-gradient(to right bottom, $colour-tertiary-light, $colour-tertiary-dark);
+            }
         }
     }
 
@@ -46,5 +47,101 @@
     &:hover &__side--back {    
         transform: rotateY(0deg); // 'unrotates' back
     
+    }
+
+    // front side styling
+    &__picture {
+        background-size: cover; // applied to all pictures
+        height: 23rem;
+        background-blend-mode: screen; //brand new (no IE functionality) basically photoshop functionality inside CSS
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // webkit goes first, best with fallback for different browsers
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: url(../img/nat-5.jpg), linear-gradient(to right bottom, $colour-secondary-light, $colour-secondary-dark);    // only one level up since path is relative to style.css. separated by comma
+        }
+        &--2 {
+            background-image: url(../img/nat-6.jpg), linear-gradient(to right bottom, $colour-primary-light, $colour-primary-dark);    // only one level up since path is relative to style.css
+        }
+        &--3 {
+            background-image: url(../img/nat-7.jpg), linear-gradient(to right bottom, $colour-tertiary-light, $colour-tertiary-dark);    // only one level up since path is relative to style.css
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $colour-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+    }
+
+    &__heading-span { // way of styling heading as block
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone; // decorates multiple lines if single line is broken
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, 
+            rgba($colour-secondary-light,.85),
+            rgba($colour-secondary-dark,.85));
+        }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom, 
+            rgba($colour-primary-light,.85),
+            rgba($colour-primary-dark,.85));
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, 
+            rgba($colour-tertiary-light,.85),
+            rgba($colour-tertiary-dark,.85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;   // standard for own styling
+            width: 80%;
+            margin: 0 auto; // best way to center block inside block
+
+            li {
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: .1rem solid $colour-grey-light-2;
+                }
+            }
+        }
+    }
+
+    // back side styling
+    &__cta {
+        position: absolute;
+        top: 50%; // centres element in parent
+        left:50%;
+        transform: translate(-50%,-50%);
+        width: 90%;
+    }
+
+    &__price-box {
+        color: $colour-white;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;   // big text often looks better thin
     }
 }
