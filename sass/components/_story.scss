@@ -1,0 +1,31 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: $shadow-deep;
+    background-color: $colour-white;
+    border-radius: .3rem;
+    padding: 6rem;
+    padding-left: 9rem; // to un-offset translated shape (overwrites general padding)
+    font-size: $default-font-size; // paragraph will inherit this
+
+    transform: skewX(-12deg);
+
+    & > * {     // no way to have two transforms valid on one element so must add this to other transform too.
+        transform: skewX(12deg);
+    }
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left; // rest of content will flow around this
+        -webkit-shape-outside: circle(50% at 50% 50%); // element has to be floated, have a height and a width
+        shape-outside: circle(50% at 50% 50%);    // changes shape of element box (unlike clip-path which changes the shape of its content) to circle(radius at x y)
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg); // best not to mess with padding / margin when floating
+    }
+
+    &__image {
+        height: 100%;    // responsive images ALWAYS need a width and /or height
+    }
+}
