@@ -1,1 +1,5 @@
-// for styles that only apply for particular pages
+.section-about {        /*Need to move up to cover white space in above block*/
+    background-color: $colour-grey-light-1;
+    padding: 25rem 0;
+    margin-top: -23.75vh;   /*element abpve has height 95vh, and goes to 75% of that i.e. 23.75vh up*/
+}

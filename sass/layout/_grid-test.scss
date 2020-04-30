@@ -1,7 +1,6 @@
 .row {
     // 1400px is standard
     width: $grid-width;  // use max-width so that it can use availabe space
-    background-color: #eee;
     margin: 0 auto; // how to centre block elements inside block elements
     
     &:not(:last-child) {         // :not selects everything except certain thing 
@@ -11,7 +10,6 @@
     @include clearfix;
 
     [class^="col-"]{ // can select elements by attributes, and ^ just looks for the start, * looks for contain, $ for end
-        background-color: orangered;
         float:left;   // always float to left for a margin on the right
 
         &:not(:last-child) {

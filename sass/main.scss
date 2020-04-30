@@ -12,11 +12,11 @@
 @import "base/animations";
 @import "base/base"; // base for low level basics: resets, html style and body selectors
 @import "base/typography";
-@import "base/utilities";
+@import "base/utilities"; // for generic reuseable snippets (e.g. centre text)
 
 @import "components/button"; // re-useable building blocks that can be used anywhere in our project
 
 @import "layout/header"; // layouts is what hold our components together
 @import "layout/grid-test"; // learning float for grid layout
 
-@import "pages/home"
+@import "pages/home"    // for styles that only apply for particular pages
